@@ -26,6 +26,7 @@ const render = () => {
             hasMap.splice(index, 1)
             render();
         })
+        $('.link').css('text-overflow', 'ellipsis')
     })
 }
 const removeX = (url) => {
@@ -44,10 +45,17 @@ $('.add').on('click', (e) => {
     render();
 })
 
-$('.close')
-
 //用户关闭时
 window.onbeforeunload = () => {
     const string = JSON.stringify(hasMap)
     localStorage.setItem('x', string)
 }
+
+$(document).on('keypress', (e) => {
+    const { key } = e;
+    for (let i = 0; i < hasMap.length; i++) {
+        if (hasMap[i].logo.toLowerCase() === key) {
+            window.open(hasMap[i].url)
+        }
+    }
+})
