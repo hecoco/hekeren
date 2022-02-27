@@ -14,14 +14,7 @@ const render = ()=>{
     $siteList.find('li:not(.last)').remove() //找到siteList下面的所有li除了last
     ;
     hasMap.forEach((node, index)=>{
-        const $li = $(`<li>
-            <div class="site">
-                <div class="logo">${node.logo}</div>
-                <div class="link">${removeX(node.url)}</div>
-                <div class="close"><svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-close"></use>
-            </svg></div>
-    </li>`).insertBefore($lastLi);
+        const $li = $(`<li>\n            <div class="site">\n                <div class="logo">${node.logo}</div>\n                <div class="link">${removeX(node.url)}</div>\n                <div class="close"><svg class="icon" aria-hidden="true">\n                <use xlink:href="#icon-close"></use>\n            </svg></div>\n    </li>`).insertBefore($lastLi);
         $li.on('click', (e)=>{
             window.open(node.url);
         });
@@ -57,4 +50,4 @@ $(document).on('keypress', (e)=>{
     for(let i = 0; i < hasMap.length; i++)if (hasMap[i].logo.toLowerCase() === key) window.open(hasMap[i].url);
 });
 
-//# sourceMappingURL=index.9dcdafff.js.map
+//# sourceMappingURL=index.1c6f744b.js.map
