@@ -14,9 +14,9 @@ const render = () => {
             <div class="site">
                 <div class="logo">${node.logo}</div>
                 <div class="link">${removeX(node.url)}</div>
-                <div class="close"><svg class="icon" aria-hidden="true">
+                <div class="close"><svg class="icon">
                 <use xlink:href="#icon-close"></use>
-            </svg></div>
+              </svg></div>
     </li>`).insertBefore($lastLi);
         $li.on('click', (e) => {
             window.open(node.url)
@@ -37,11 +37,18 @@ render();
 
 $('.add').on('click', (e) => {
     let url = window.prompt();
+    url = url.trim();
+    console.log(typeof url)
+    console.log(url.indexOf('http'))
     console.log(url)
-    if (url.indexOf('http') !== 0) {
-        url = 'https://' + url;
+    if (url !== '') {//url没有填写的话不是undefined,而是''
+        if (url.indexOf('http') !== 0) {
+            url = 'https://' + url;
+        }
+        hasMap.push({ logo: removeX(url)[0], url: url })
     }
-    hasMap.push({ logo: removeX(url)[0], url: url })
+    console.log("hasMap")
+
     render();
 })
 
@@ -59,3 +66,5 @@ $(document).on('keypress', (e) => {
         }
     }
 })
+
+//parcel build src/index.html --no-optimize --public-url https://hecoco.github.io/hekeren/dist/
