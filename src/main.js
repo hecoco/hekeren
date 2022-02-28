@@ -37,7 +37,7 @@ render();
 
 $('.add').on('click', (e) => {
     let url = window.prompt();
-    url = url.trim();
+    url = url.trim();//去空格
     console.log(typeof url)
     console.log(url.indexOf('http'))
     console.log(url)
